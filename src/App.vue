@@ -1,12 +1,19 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="container">
+      <Navbar></Navbar>
+      <router-view/>
   </div>
 </template>
+
+<script>
+import Navbar from './views/partials/Navbar'
+  export default {
+    name:'MasterPage',
+    components: {
+      Navbar,
+    }
+  }
+</script>
 
 <style>
 #app {

@@ -1,7 +1,4 @@
 body {
-  a{
-    background: tan;
-  }
+  @import "navbar";
   @import "home";
-  @import "about";
 }
