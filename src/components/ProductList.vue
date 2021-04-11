@@ -308,6 +308,12 @@ export default {
     showModal() {
       this.editMode = false;
       this.imageEditMode = false;
+      var myInput = document.getElementById('myInput')
+      var myModalEl = document.getElementById('productModal')
+      console.log('sssss');
+      myModalEl.addEventListener('shown.bs.modal', function (event) {
+        console.log(event);
+      })
       this.resetModal();
     },
     editModal(product) {

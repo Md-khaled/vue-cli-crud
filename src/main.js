@@ -9,6 +9,7 @@ import App from './App.vue'
 // add these before Vue is instantiated
 
 import router from './router'
+import store from './store'
 
 //sass
 import "./sass/app.scss"
@@ -25,7 +26,17 @@ import '@fortawesome/fontawesome-free/js/all.js';
 window.$ = window.jQuery  = require('jquery')
 
 /*Axios*/
-
+import VueAuthenticate from 'vue-authenticate';
+Vue.use(VueAuthenticate, {
+  baseUrl: 'http://localhost:8080/', // Your API domain
+  
+  providers: {
+    github: {
+      clientId: '',
+      redirectUri: 'http://localhost:8080/' // Your client app URL
+    }
+  }
+})
 
 // window.axios = axios;
 
@@ -69,6 +80,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 

@@ -1,17 +1,27 @@
 <template>
   <div>
-    <ProductList></ProductList>
+      <button @click="authenticate('github')">auth Github</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ProductList from '@/components/ProductList.vue'
+// import ProductList from '@/components/ProductList.vue'
 
 export default {
   name: 'MasterPage',
-  components: {
-    ProductList,
+methods: {
+    authenticate: function (provider) {
+      this.$auth.authenticate(provider).then(function () {
+        // Execute application logic after successful social authentication
+      })
+    }
   },
+  mounted(){
+  	this.axios.get('/github/callback', (req, res) => {
+  		console.log(reg);
+  	})
+  }
+  
 }
 </script>

@@ -1,38 +1,50 @@
 <template>
   <div class="container">
-      <Navbar></Navbar>
-      <router-view/>
-  </div>
+      {{auth}}
+      <clickbtn></clickbtn>
+      <button class="btn btn-info" @click="getdata">click</button>
+      <router-view></router-view>
+      </div>
 </template>
 
 <script>
-import Navbar from './views/partials/Navbar'
+import {mapGetters} from 'vuex'
+import clickbtn from './components/HelloWorld.vue';
   export default {
     name:'MasterPage',
-    components: {
-      Navbar,
+    components:{clickbtn},
+    methods:{
+      getdata(){
+        var username = 'Md-khaled'
+        var password = 'ujj@l12345'
+
+        let auth = btoa(username + ":" + password);
+         this.axios.get('https://api.github.com/users/Md-khaled',{
+            headers: {
+                'Accept' : 'application/vnd.github.v3+json'
+            }
+        })
+      .then(response => response.json())
+      .then(data =>{
+        console.log(data);
+      })
+      .catch((errors)=>{console.log(errors);})
+      }
+      
+    },
+    mounted(){
+      console.log(this.$store.state.auth);
+     
+    },
+    computed:{
+      ...mapGetters([
+          'auth',
+      ]),
     }
   }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
