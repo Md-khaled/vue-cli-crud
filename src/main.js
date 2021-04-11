@@ -28,12 +28,12 @@ window.$ = window.jQuery  = require('jquery')
 /*Axios*/
 import VueAuthenticate from 'vue-authenticate';
 Vue.use(VueAuthenticate, {
-  baseUrl: 'http://localhost:8080/', // Your API domain
+  baseUrl: 'http://localhost:8080', // Your API domain
   
   providers: {
     github: {
-      clientId: '',
-      redirectUri: 'http://localhost:8080/' // Your client app URL
+      clientId: 'Iv1.0db3470d75593452',
+      redirectUri: 'http://localhost:8080' // Your client app URL
     }
   }
 })

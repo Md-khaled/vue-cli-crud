@@ -12,7 +12,8 @@ export default {
   name: 'MasterPage',
 methods: {
     authenticate: function (provider) {
-      this.$auth.authenticate(provider).then(function () {
+      this.$auth.authenticate(provider).then(function (response) {
+      	console.log(response);
         // Execute application logic after successful social authentication
       })
     }
